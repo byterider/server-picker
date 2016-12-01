@@ -1,9 +1,9 @@
 	var widget = `
-<div style="position: absolute; top: 40px; left: 50%;">
-	<form style="position: relative; left: -50%; border: solid #ccc 1px; box-shadow: 2px 2px 8px 0px rgba(51,51,51,0.30); padding: 25px; background: -webkit-linear-gradient(top, #92c500 0%,#6f9b00 100%); font-size: 13px; line-height: 20px; font-family: Myriad, Lucida Grande, sans-serif; color: #fff;">
-		<button class="form-control" onclick="destroy()" style="padding: 1px; width: 15px; height: 15px; float: right; font-size: 8px;">X</button>
+<div style="position: absolute; top: 40px; left: 50%; z-index: 9999;">
+	<form class="modFlatButton" style="position: relative; left: -50%; border: solid #ccc 1px; box-shadow: 2px 2px 8px 0px rgba(51,51,51,0.30); padding: 25px; background: -webkit-linear-gradient(top, #92c500 0%,#6f9b00 100%); font-size: 13px; line-height: 20px; font-family: Myriad, Lucida Grande, sans-serif; color: #fff;">
+		<button class="secondary form-control" onclick="destroy()" style="padding: 1px; width: 15px; height: 15px; float: right; font-size: 8px; line-height: 8px;">X</button>
 		Choose a Server: <br>
-		<select id="server" class="form-control">
+		<select id="server" class="secondary form-control">
 			<option value="https://vimapget-emaz1i.it.bwns.ch:4502">INT0 - AEM6 - Author
 			<option value="https://cms.int.swisscom.ch">			INT0 - AEM6 - cms.int
 			<option value="https://orion.int.swisscom.ch">			INT0 - AEM6 - orion.int
@@ -43,12 +43,12 @@
 			<option value="https://www.bluewin.ch">					PROD - CQ5 - www.bluewin
 		</select> <br><br>
 		Choose an Action: <br>
-		<button class="form-control" onclick="return openURL('/crx/de/index.jsp');">CRX DE Lite</button>
-		<button class="form-control" onclick="return openURL('/crx/packmgr/index.jsp');">CRX Package Manager</button>
-		<button class="form-control" onclick="return openURL('/siteadmin#/content/swisscom/de/component-gallery');">CMS</button>
-		<button class="form-control" onclick="return openURL('/damadmin#/content/dam/swisscom/de');">DAM</button>
-		<button class="form-control" onclick="return openURL('/miscadmin#/etc/swisscom/tools/testcases');">Tools</button>
-		<button class="form-control" onclick="return showVersion();">Version</button>
+		<button class="secondary form-control" onclick="return openURL('/crx/de/index.jsp');">CRX DE Lite</button>
+		<button class="secondary form-control" onclick="return openURL('/crx/packmgr/index.jsp');">CRX Package Manager</button>
+		<button class="secondary form-control" onclick="return openURL('/siteadmin#/content/swisscom/de/component-gallery');">CMS</button>
+		<button class="secondary form-control" onclick="return openURL('/damadmin#/content/dam/swisscom/de');">DAM</button>
+		<button class="secondary form-control" onclick="return openURL('/miscadmin#/etc/swisscom/tools/testcases');">Tools</button>
+		<button class="secondary form-control" onclick="return showVersion();">Version</button>
 	</form>
 </div>
 	`;
