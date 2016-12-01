@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Bookmarklet: CQ5/AEM6 Server Picker</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	</head>
+	<body class="container">
+		<h1>Bookmarklet: CQ5/AEM6 Server Picker</h1>
+		Select a server and an action and voila.
+
+		<h3>Installation</h3>
+		Drag the following link to your bookmarks bar:
+		<a id="bookmarklet" href="javascript:">Servers</a>
+
+		<h3>Source</h3>
+		<pre id="source" style="-moz-tab-size: 4; -o-tab-size: 4; tab-size: 4;"></pre>
+
+		<script>
+			(function () {
+				'use strict';
+				var code = function () {
+					// --- the bookmarklet code START ---
+
+					var url = location.protocol === 'file:' ? 'server-picker.js' :
+							'https://raw.githubusercontent.com/byterider/server-picker/master/server-picker.js',
+						head = document.getElementsByTagName('head')[0],
+						script = document.createElement('script');
+
+					if (head && script) {
+						script.src = url;
+						head.appendChild(script);//test
+					}
+
+					// --- the bookmarklet code END ---
+				};
+				function stripComments(s) {
+					return s.replace(/\n?( |\t)*([^:])\/{2}[^\n]*$/mg, '$2');
+				}
+				function extractBody(s) {
+					return s.substring(s.indexOf('{') + 2, s.lastIndexOf('}')).replace(/^([ \t]*\n)+/m, '').replace(/(\n\t*)+$/, '');
+				}
+				function collapseWhiteSpace(s) {
+					return s.replace(/([^}{;,\s])\s*\n/mg, '$1\n').replace(/^\s+|\s+$|\n/mg, '');
+				}
+				function outdent(s) {
+					var indentLevel = s.match(/^ |\t+/)[0].length;
+					return s.replace(new RegExp('^ |\\t{' + indentLevel + '}', 'mg'), '');
+				}
+				var source = '' + code,
+					bookmarklet = collapseWhiteSpace(extractBody(stripComments(source))),
+					preview = outdent(extractBody(stripComments(source)));
+
+				document.getElementById('bookmarklet').href += bookmarklet;
+				document.getElementById('source').innerText = preview;
+			}());
+		</script>
+	</body>
+</html>
